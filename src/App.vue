@@ -1,53 +1,150 @@
-/Users/keilahscott/Downloads/Hogwarts Shopping Cart files/img/Wand.jpg /Users/keilahscott/Downloads/Hogwarts Shopping Cart files/img/UnicornTailHair.png /Users/keilahscott/Downloads/Hogwarts Shopping Cart files/img/UnicornHorn.png /Users/keilahscott/Downloads/Hogwarts Shopping Cart files/img/Nimbus2000.jpg /Users/keilahscott/Downloads/Hogwarts Shopping Cart files/img/GoldenSnitch.png /Users/keilahscott/Downloads/Hogwarts Shopping Cart files/img/DragonLiver.png<template>
+<template>
   <div class="shopping-cart">
     <h1>{{ username }}'s Shopping Cart</h1>
     <div class="cart-container">
       <div class="cart-list">
-        <div
-          class="cart-list-item"
-          v-for="item in shoppingCartItems"
-          :key="item.id"
-        >
+        <div class="cart-list-item">
           <img
-            :src="item.image"
-            :alt="item.productName"
+            :src="shoppingCartItems[0].image"
+            :alt="shoppingCartItems[0].productName"
             class="product-image"
           />
           <div class="item-details-with-actions">
             <div class="item-details">
-              <h2>{{ item.productName }}</h2>
-              <p class="price">${{ item.price }}</p>
-              <p class="in-stock-status" v-if="item.isInStock">
+              <h2>{{ shoppingCartItems[0].productName }}</h2>
+              <p class="price">${{ shoppingCartItems[0].price }}</p>
+              <p class="in-stock-status">
                 <i class="fa-solid fa-check"></i> In stock
               </p>
-              <p class="on-backorder-status" v-else>
+            </div>
+            <div class="item-actions">
+              <div class="quantity-selector">
+                <button class="quantity-change-button">−</button>
+                <input
+                  type="text"
+                  class="quantity-input"
+                  :value="shoppingCartItems[0].quantity"
+                  aria-label="quantity"
+                />
+                <button class="quantity-change-button">+</button>
+              </div>
+              <button class="remove-item">✕</button>
+            </div>
+          </div>
+        </div>
+        <div class="cart-list-item">
+          <img
+            :src="shoppingCartItems[1].image"
+            :alt="shoppingCartItems[1].productName"
+            class="product-image"
+          />
+          <div class="item-details-with-actions">
+            <div class="item-details">
+              <h2>{{ shoppingCartItems[1].productName }}</h2>
+              <p class="price">${{ shoppingCartItems[1].price }}</p>
+              <p class="in-stock-status">
+                <i class="fa-solid fa-check"></i> In stock
+              </p>
+            </div>
+            <div class="item-actions">
+              <div class="quantity-selector">
+                <button class="quantity-change-button">−</button>
+                <input
+                  type="text"
+                  class="quantity-input"
+                  :value="shoppingCartItems[1].quantity"
+                  aria-label="quantity"
+                />
+                <button class="quantity-change-button">+</button>
+              </div>
+              <button class="remove-item">✕</button>
+            </div>
+          </div>
+        </div>
+        <div class="cart-list-item">
+          <img
+            :src="shoppingCartItems[2].image"
+            :alt="shoppingCartItems[2].productName"
+            class="product-image"
+          />
+          <div class="item-details-with-actions">
+            <div class="item-details">
+              <h2>{{ shoppingCartItems[2].productName }}</h2>
+              <p class="price">${{ shoppingCartItems[2].price }}</p>
+              <p class="on-backorder-status">
                 <i class="fa-solid fa-hourglass-half"></i> On backorder
               </p>
             </div>
             <div class="item-actions">
               <div class="quantity-selector">
-                <button
-                  class="quantity-change-button"
-                  @click="decreaseOne(item.id)"
-                >
-                  −
-                </button>
+                <button class="quantity-change-button">−</button>
                 <input
                   type="text"
                   class="quantity-input"
-                  v-model.number="item.quantity"
+                  :value="shoppingCartItems[2].quantity"
                   aria-label="quantity"
                 />
-                <button
-                  class="quantity-change-button"
-                  @click="increaseOne(item.id)"
-                >
-                  +
-                </button>
+                <button class="quantity-change-button">+</button>
               </div>
-              <button class="remove-item" @click="removeItem(item.id)">
-                ✕
-              </button>
+              <button class="remove-item">✕</button>
+            </div>
+          </div>
+        </div>
+        <div class="cart-list-item">
+          <img
+            :src="shoppingCartItems[3].image"
+            :alt="shoppingCartItems[3].productName"
+            class="product-image"
+          />
+          <div class="item-details-with-actions">
+            <div class="item-details">
+              <h2>{{ shoppingCartItems[3].productName }}</h2>
+              <p class="price">${{ shoppingCartItems[3].price }}</p>
+              <p class="in-stock-status">
+                <i class="fa-solid fa-check"></i> In stock
+              </p>
+            </div>
+            <div class="item-actions">
+              <div class="quantity-selector">
+                <button class="quantity-change-button">−</button>
+                <input
+                  type="text"
+                  class="quantity-input"
+                  :value="shoppingCartItems[3].quantity"
+                  aria-label="quantity"
+                />
+                <button class="quantity-change-button">+</button>
+              </div>
+              <button class="remove-item">✕</button>
+            </div>
+          </div>
+        </div>
+        <div class="cart-list-item">
+          <img
+            :src="shoppingCartItems[4].image"
+            :alt="shoppingCartItems[4].productName"
+            class="product-image"
+          />
+          <div class="item-details-with-actions">
+            <div class="item-details">
+              <h2>{{ shoppingCartItems[4].productName }}</h2>
+              <p class="price">${{ shoppingCartItems[4].price }}</p>
+              <p class="in-stock-status">
+                <i class="fa-solid fa-check"></i> In stock
+              </p>
+            </div>
+            <div class="item-actions">
+              <div class="quantity-selector">
+                <button class="quantity-change-button">−</button>
+                <input
+                  type="text"
+                  class="quantity-input"
+                  :value="shoppingCartItems[4].quantity"
+                  aria-label="quantity"
+                />
+                <button class="quantity-change-button">+</button>
+              </div>
+              <button class="remove-item">✕</button>
             </div>
           </div>
         </div>
@@ -63,20 +160,20 @@
         <div :class="{ 'hide-order-details': hideDetails }">
           <div class="summary-item">
             <span>Subtotal</span>
-            <span>${{ subtotal }}</span>
+            <span>$13900</span>
           </div>
           <div class="summary-item">
             <span>Shipping estimate</span>
-            <span>${{ shippingEstimate }}</span>
+            <span>$100</span>
           </div>
           <div class="summary-item">
             <span>Tax estimate</span>
-            <span>${{ taxEstimate }}</span>
+            <span>$1112</span>
           </div>
         </div>
         <div class="summary-total">
           <strong>Order total</strong>
-          <strong>${{ total }}</strong>
+          <strong>$15112</strong>
         </div>
         <button class="checkout-button">Checkout</button>
       </div>
@@ -85,10 +182,10 @@
 </template>
 
 <script setup>
-import { computed, ref, watch } from 'vue'
+import { ref } from 'vue'
 
 let username = 'Harry'
-let shoppingCartItems = ref([
+let shoppingCartItems = [
   {
     id: 1,
     productName: 'Dragon Liver',
@@ -129,60 +226,9 @@ let shoppingCartItems = ref([
     quantity: 1,
     image: 'src/assets/img/Nimbus2000.jpg'
   }
-])
+]
 
 let hideDetails = ref(false)
-
-function decreaseOne(id) {
-  shoppingCartItems.value.some((item) => {
-    if (item.id == id && item.quantity != 0) {
-      item.quantity = item.quantity - 1
-    }
-  })
-}
-
-function increaseOne(id) {
-  shoppingCartItems.value.some((item) => {
-    if (item.id == id) {
-      item.quantity = item.quantity + 1
-    }
-  })
-}
-
-function removeItem(id) {
-  // Step 1: find the index of the item to be deleted
-  let index = shoppingCartItems.value.findIndex((item) => {
-    return item.id == id
-  })
-  // Step 2: delete this item from the list
-  shoppingCartItems.value.splice(index, 1)
-}
-let subtotal = computed(() =>
-  shoppingCartItems.value.reduce(
-    (acc, item) => acc + item.price * item.quantity,
-    0
-  )
-)
-
-let shippingEstimate = computed(() => (subtotal.value > 10000 ? 100 : 50))
-
-let taxEstimate = computed(() => subtotal.value * 0.08)
-
-let total = computed(
-  () => subtotal.value + shippingEstimate.value + taxEstimate.value
-)
-
-// Automatically save to localStorage whenever any part of shoppingCartItems changes
-watch(
-  shoppingCartItems,
-  () => {
-    localStorage.setItem(
-      'hogwartsShoppingCart',
-      JSON.stringify(shoppingCartItems.value)
-    )
-  },
-  { deep: true }
-)
 </script>
 
 <style scoped>
